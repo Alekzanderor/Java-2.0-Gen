@@ -23,12 +23,15 @@ public class Task6 {
         System.out.println(listtry);
 
         Map<String,Integer> counter = new HashMap<>();
+        int maxValue = 0;
 
         for (String x : listtry) {
             int newValue = counter.getOrDefault(x, 0) + 1;
+            if (newValue>maxValue) maxValue=newValue;
             counter.put(x, newValue);
         }
 
         System.out.println(counter);
+        System.out.println("Max"+maxValue);
 
     }}
