@@ -6,5 +6,6 @@ public abstract class BasicCalculator {
     float X;
     float Y;
     String operator;
+    Boolean F;
 
 }

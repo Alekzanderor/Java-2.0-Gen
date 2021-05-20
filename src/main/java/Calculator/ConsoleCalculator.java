@@ -12,12 +12,33 @@ public class ConsoleCalculator extends BasicCalculator implements ReadingFromCon
 
         //считываем пользовательский ввод
         System.out.println("Enter first number");
-        X= Float.valueOf(br.readLine());
+        F=false;
+        while (!F){
+            try { //обрабатываем ошибку ввода пустой строки
+                X = Float.valueOf(br.readLine());
+                F=true;
+            }
+            catch (NumberFormatException e){
+                System.out.println("Error: "+e.getMessage());
+                System.out.println("Enter first number");
+            }
+        }
+
         System.out.println("Enter second number");
-        Y= Float.valueOf(br.readLine());
+        F=false;
+        while (!F){
+            try { //обрабатываем ошибку ввода пустой строки
+                Y= Float.valueOf(br.readLine());
+                F=true;
+            }
+            catch (NumberFormatException e){
+                System.out.println("Error: "+e.getMessage());
+                System.out.println("Enter second number");
+            }
+        }
+
         System.out.println("Choose operator");
         operator = br.readLine();
-
     }
 
     @Override
@@ -26,9 +47,7 @@ public class ConsoleCalculator extends BasicCalculator implements ReadingFromCon
         if (operator.equals("+")) {System.out.printf("%.4f", X+Y) ;}
         else if (operator.equals("-")) {System.out.printf("%.4f",X-Y);}
         else if (operator.equals("*")) {System.out.printf("%.4f",X*Y);}
-        else if (operator.equals("/")) {System.out.printf("%.4f",X / Y);}
-        else { System.out.println("Incorrect operand" + "operand"); }
-
+        else if (operator.equals("/")) {System.out.printf("%.4f", X / Y);}
+        else { System.out.println("Incorrect operator " + "'" + operator + "'");}
     }
-
 }
